@@ -4,39 +4,29 @@
 <meta charset="utf-8" />
 <title>Time website</title>
 </head>
-    
 <body>
     <h1 id="text-and-time"></h1>
     <script>
-        var h1text = "My name is Wong and my favorite hobby is watching movie with my friends."
         
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-            }
-                return i;
-        }
-            
-            function times(){
-                var date = new Date();
+        var h1text = "My name is Wong and my favorite hobby is watching movie with my friends."; //add text
+            function times(){ //create a time function.
+                var date = new Date(); //create Date object
                 
-                var time = document.getElementById("text-and-time");
+                var time = document.getElementById("text-and-time"); //grab h1
                 
+                //grab the time
                 var hour = date.getHours();
                 var minute = date.getMinutes();
                 var second = date.getSeconds();
                 
-                hour = (hour%12) || 12;
+                hour = (hour%12) || 12; // convert to 12 hours format using modulo
                 
-                hour = checkTime(hour);
-                minute = checkTime(minute);
-                second = checkTime(second);
-                
-                time.innerText = h1text + " The current time is " + hour + ":" + minute + ":" + second;
+                //add time after the text
+                //the values are converted to string in order to use padStart method to add 0 if the value is less than 10.
+                time.innerText = h1text + " The current time is " + hour.toString().padStart(2,'0') + ":" + minute.toString().padStart(2,'0') + ":" + second.toString().padStart(2,'0');
             }
-            
-        times();
-        setInterval(times,100);
+        times(); //call the function.
+        setInterval(times,100);//function are executed again and again every 100ms, so the time can update.
 
     </script>
 </body>
